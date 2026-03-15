@@ -185,15 +185,25 @@ Every skill must have its own section in README.md under `## Skills` with:
 2. **One-line description** — what the skill does
 3. **When to use** — triggers for when the skill should be activated
 4. **References included** — list of reference files with short descriptions
-5. **Install & Use** (inside a `<details>` collapsible) — install commands
-   for every supported tool:
-   - Claude Code (`/plugin install`)
-   - Cursor (`.cursor/rules/`)
-   - Windsurf (`.windsurfrules`)
-   - GitHub Copilot (`.github/copilot-instructions.md`)
-   - Cline / Roo Code (Custom Instructions / `.clinerules`)
-   - Aider (`--read` flag or `.aider.conf.yml`)
-   - Manual (`curl` for SKILL.md + all reference files)
+5. **Install & Use** (inside a `<details>` collapsible) — full install
+   commands with complete file paths for **every** supported tool:
+   - Claude Code — `/plugin install`
+   - Cursor — `.cursor/rules/<skill>.mdc`
+   - Windsurf — `.windsurfrules`
+   - GitHub Copilot — `.github/copilot-instructions.md`
+   - Cline / Roo Code — `.clinerules`
+   - Continue — `.continue/rules/<skill>.md`
+   - Aider — `--read` flag or `.aider.conf.yml`
+   - Zed — `.rules`
+   - Codex CLI (OpenAI) — `AGENTS.md`
+   - Gemini CLI — `GEMINI.md`
+   - JetBrains AI / Junie — `.junie/guidelines.md`
+   - Goose — `.goosehints`
+   - ChatGPT / Gemini / Any Chat LLM — paste into system prompt
+   - Manual (curl) — `SKILL.md` + all reference files with full URLs
+
+**Important:** Never use placeholders like `<skill-name>` in install
+commands. Always provide the exact, copy-pasteable path for each skill.
 
 Use the existing skills in README.md as the template. Copy the structure
 exactly, replacing skill name, description, and reference file names.
