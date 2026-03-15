@@ -2,7 +2,7 @@
 
 Opinionated, production-grade coding skills for AI assistants.
 
-Works with **Claude Code**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Aider**, and any LLM-based coding tool.
+Works with **Claude Code**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Continue**, **Aider**, **Zed**, **Codex CLI**, **Gemini CLI**, **Junie**, **Goose**, and any LLM-based coding tool.
 
 ---
 
@@ -25,18 +25,6 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 | [react-component-splitter](#react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
 | [react-project-structure](#react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
 | [shadcn-component-system](#shadcn-component-system) | Build variant-driven, theme-synced UI components using Shadcn UI and CVA with atomic decomposition | `react` `shadcn` `cva` `tailwind` `typescript` |
-
----
-
-## Quick Start
-
-All skills can be installed via the Claude Code marketplace or manually via curl. Pick a skill below for tool-specific instructions.
-
-```bash
-# Claude Code — install any skill in one command
-/plugin marketplace add iam-hussain/skillforge
-/plugin install <skill-name>-plugin
-```
 
 ---
 
@@ -91,7 +79,22 @@ curl -o .github/copilot-instructions.md \
 
 #### Cline / Roo Code
 
-Paste `SKILL.md` contents into **Custom Instructions** in extension settings, or add to `.clinerules` in your project root.
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Custom Instructions** in extension settings.
+
+#### Continue
+
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/react-component-splitter.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or add to `.continuerules` in your project root.
 
 #### Aider
 
@@ -106,16 +109,64 @@ read:
   - skills/react-component-splitter/SKILL.md
 ```
 
-#### Manual
+#### Zed
 
 ```bash
-curl -o SKILL.md \
+curl -o .rules \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
-Include the reference files for full coverage:
+Or add to your **Rules Library** in Zed's Agent Panel settings.
+
+#### Codex CLI (OpenAI)
 
 ```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or append to an existing `AGENTS.md` in your project root.
+
+#### Gemini CLI
+
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or append to `~/.gemini/GEMINI.md` for global use.
+
+#### JetBrains AI / Junie
+
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or paste into **Settings > Tools > Junie > Project Settings > Guidelines**.
+
+#### Goose
+
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or append to an existing `.goosehints` file.
+
+#### ChatGPT / Gemini / Any Chat LLM
+
+Copy the contents of [`SKILL.md`](./skills/react-component-splitter/SKILL.md) and paste into your system prompt, custom instructions, or project context.
+
+#### Manual (curl)
+
+```bash
+# Skill file
+curl -o SKILL.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+
+# Reference files
 curl -o hooks-patterns.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/references/hooks-patterns.md
 curl -o compound-components.md \
@@ -175,7 +226,22 @@ curl -o .github/copilot-instructions.md \
 
 #### Cline / Roo Code
 
-Paste `SKILL.md` contents into **Custom Instructions** in extension settings, or add to `.clinerules` in your project root.
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Custom Instructions** in extension settings.
+
+#### Continue
+
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/react-project-structure.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or add to `.continuerules` in your project root.
 
 #### Aider
 
@@ -190,16 +256,64 @@ read:
   - skills/react-project-structure/SKILL.md
 ```
 
-#### Manual
+#### Zed
 
 ```bash
-curl -o SKILL.md \
+curl -o .rules \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
 ```
 
-Include the reference files for full coverage:
+Or add to your **Rules Library** in Zed's Agent Panel settings.
+
+#### Codex CLI (OpenAI)
 
 ```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or append to an existing `AGENTS.md` in your project root.
+
+#### Gemini CLI
+
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or append to `~/.gemini/GEMINI.md` for global use.
+
+#### JetBrains AI / Junie
+
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or paste into **Settings > Tools > Junie > Project Settings > Guidelines**.
+
+#### Goose
+
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or append to an existing `.goosehints` file.
+
+#### ChatGPT / Gemini / Any Chat LLM
+
+Copy the contents of [`SKILL.md`](./skills/react-project-structure/SKILL.md) and paste into your system prompt, custom instructions, or project context.
+
+#### Manual (curl)
+
+```bash
+# Skill file
+curl -o SKILL.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+
+# Reference files
 curl -o feature-slice.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/references/feature-slice.md
 curl -o atomic-design.md \
@@ -259,7 +373,22 @@ curl -o .github/copilot-instructions.md \
 
 #### Cline / Roo Code
 
-Paste `SKILL.md` contents into **Custom Instructions** in extension settings, or add to `.clinerules` in your project root.
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Custom Instructions** in extension settings.
+
+#### Continue
+
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/shadcn-component-system.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or add to `.continuerules` in your project root.
 
 #### Aider
 
@@ -274,16 +403,64 @@ read:
   - skills/shadcn-component-system/SKILL.md
 ```
 
-#### Manual
+#### Zed
 
 ```bash
-curl -o SKILL.md \
+curl -o .rules \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
 ```
 
-Include the reference files for full coverage:
+Or add to your **Rules Library** in Zed's Agent Panel settings.
+
+#### Codex CLI (OpenAI)
 
 ```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or append to an existing `AGENTS.md` in your project root.
+
+#### Gemini CLI
+
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or append to `~/.gemini/GEMINI.md` for global use.
+
+#### JetBrains AI / Junie
+
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or paste into **Settings > Tools > Junie > Project Settings > Guidelines**.
+
+#### Goose
+
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or append to an existing `.goosehints` file.
+
+#### ChatGPT / Gemini / Any Chat LLM
+
+Copy the contents of [`SKILL.md`](./skills/shadcn-component-system/SKILL.md) and paste into your system prompt, custom instructions, or project context.
+
+#### Manual (curl)
+
+```bash
+# Skill file
+curl -o SKILL.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+
+# Reference files
 curl -o cva-patterns.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/cva-patterns.md
 curl -o shadcn-extension.md \
@@ -291,6 +468,28 @@ curl -o shadcn-extension.md \
 ```
 
 </details>
+
+---
+
+## Supported Tools
+
+Skillforge skills work with any AI coding tool that accepts system prompts or custom instructions. Here's the full compatibility matrix:
+
+| Tool | Instructions File | Method |
+|------|-------------------|--------|
+| **Claude Code** | Plugin marketplace | `/plugin install` |
+| **Cursor** | `.cursor/rules/<skill>.mdc` | Project rule file |
+| **Windsurf** | `.windsurfrules` | Project rule file |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Custom instruction file |
+| **Cline / Roo Code** | `.clinerules` | Project rule file |
+| **Continue** | `.continue/rules/<skill>.md` | Project rule file |
+| **Aider** | `.aider.conf.yml` → `read:` | Context file |
+| **Zed** | `.rules` | Project rule file |
+| **Codex CLI** | `AGENTS.md` | Project instruction file |
+| **Gemini CLI** | `GEMINI.md` | Project context file |
+| **JetBrains / Junie** | `.junie/guidelines.md` | Project guideline file |
+| **Goose** | `.goosehints` | Project hints file |
+| **ChatGPT / Gemini / Any LLM** | Paste into prompt | System prompt / custom instructions |
 
 ---
 
