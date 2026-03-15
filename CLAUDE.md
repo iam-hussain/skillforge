@@ -37,7 +37,8 @@ skillforge/
     [next-skill]/
       SKILL.md
       references/
-  marketplace.json             ← Claude Code marketplace catalog
+  .claude-plugin/
+    marketplace.json           ← Claude Code marketplace catalog
   plugin.json                  ← plugin manifest
   CLAUDE.md                    ← this file (repo-level context)
   README.md                    ← public-facing documentation
@@ -108,7 +109,8 @@ Every skill in this repo must meet these standards before merging:
 
 ## marketplace.json Rules
 
-When adding a new skill to marketplace.json, follow this schema:
+The marketplace file lives at `.claude-plugin/marketplace.json`.
+When adding a new skill, follow this schema:
 
 ```json
 {
@@ -165,7 +167,7 @@ When asked to create a new skill for this repo:
    reference routing → examples → anti-patterns
 3. Create the folder under skills/
 4. Add reference files to references/ for any content over 100 lines
-5. Update marketplace.json plugins array
+5. Update .claude-plugin/marketplace.json plugins array
 6. Update plugin.json skills array
 7. Update README.md skills table
 

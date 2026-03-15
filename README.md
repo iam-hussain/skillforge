@@ -69,7 +69,8 @@ skillforge/
         hooks-patterns.md
         compound-components.md
         feature-slice.md
-  marketplace.json             ← Claude Code marketplace catalog
+  .claude-plugin/
+    marketplace.json           ← Claude Code marketplace catalog
   plugin.json                  ← plugin manifest
   CLAUDE.md                    ← repo context
   CONTRIBUTING.md              ← contribution guide

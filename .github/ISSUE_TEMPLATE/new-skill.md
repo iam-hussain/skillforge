@@ -39,7 +39,7 @@ assignees: ""
 - [ ] SKILL.md with valid frontmatter (name + description)
 - [ ] At least one reference doc in `references/`
 - [ ] At least one before/after example
-- [ ] Entry added to `marketplace.json`
+- [ ] Entry added to `.claude-plugin/marketplace.json`
 - [ ] Entry added to `plugin.json`
 - [ ] Row added to README.md skills table
 - [ ] CLAUDE.md roadmap updated

@@ -56,7 +56,7 @@ Reference file names should be descriptive: `hooks-patterns.md`, not `hooks.md`.
 
 ### 4. Register the Skill
 
-**marketplace.json** — add an entry to the `plugins` array:
+**.claude-plugin/marketplace.json** — add an entry to the `plugins` array:
 
 ```json
 {
@@ -107,7 +107,7 @@ Before submitting, verify:
 - [ ] No placeholders — all code examples are complete
 - [ ] LLM-agnostic — works with any AI assistant
 - [ ] Folder name matches frontmatter `name`
-- [ ] Registered in marketplace.json, plugin.json, README.md
+- [ ] Registered in .claude-plugin/marketplace.json, plugin.json, README.md
 
 ---
 
