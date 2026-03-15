@@ -1,12 +1,14 @@
-# skillforge
+# Skillforge
 
-Claude Code skills for frontend and full-stack engineers.
+Opinionated, production-grade coding skills for AI assistants.
+
+Works with **Claude Code**, **Cursor**, **Windsurf**, **GitHub Copilot**, **Cline**, **Aider**, and any LLM-based coding tool.
 
 ---
 
 ## What is Skillforge?
 
-Skillforge is a curated collection of AI-powered coding skills — opinionated, production-grade prompts that teach AI assistants how to perform specific engineering tasks. Each skill is a standalone prompt that works with any LLM-based coding tool.
+Skillforge is a curated collection of engineering skills — structured prompts that teach AI coding assistants how to perform specific tasks the way a senior engineer would. Each skill is a standalone markdown file that works with any tool that accepts system prompts or project context.
 
 **Key principles:**
 - **Opinionated** — clear recommendations, not option lists
@@ -20,40 +22,93 @@ Skillforge is a curated collection of AI-powered coding skills — opinionated, 
 
 | Skill | Description | Tags |
 |-------|-------------|------|
-| [component-splitter](./skills/component-splitter) | Split monolithic components using Feature-Slice, Atomic Design, Compound patterns | `react` `next.js` `vite` `typescript` |
+| [react-component-splitter](./skills/react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
+| [react-project-structure](./skills/react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
 
 ---
 
 ## Installation
 
-### Claude Code (plugin)
+### Claude Code
 
 ```bash
 # Add the marketplace
 /plugin marketplace add iam-hussain/skillforge
 
 # Install a specific skill
-/plugin install component-splitter-plugin
+/plugin install react-component-splitter-plugin
+/plugin install react-project-structure-plugin
 ```
 
-### Manual (any AI tool)
+### Cursor
 
-Copy the SKILL.md content into your AI tool's system prompt or project context:
+Add a skill as a project rule:
+
+```bash
+# Copy into your project's .cursor/rules/ directory
+mkdir -p .cursor/rules
+curl -o .cursor/rules/react-component-splitter.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or paste the contents of `SKILL.md` into **Cursor Settings > Rules for AI**.
+
+### Windsurf
+
+Add a skill to your project rules:
+
+```bash
+# Copy into your project root or .windsurfrules
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+Or paste the contents of `SKILL.md` into **Windsurf > AI Rules**.
+
+### GitHub Copilot
+
+Add a skill as a custom instruction:
+
+```bash
+# Copy into your project's .github/ directory
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+### Cline / Roo Code
+
+Paste the contents of `SKILL.md` into the **Custom Instructions** field in extension settings, or add it to a `.clinerules` file in your project root.
+
+### Aider
+
+Pass the skill file as context:
+
+```bash
+aider --read skills/react-component-splitter/SKILL.md
+```
+
+Or add it to your `.aider.conf.yml`:
+
+```yaml
+read:
+  - skills/react-component-splitter/SKILL.md
+```
+
+### Any Other AI Tool
+
+Every skill is a plain markdown file. Use it however your tool accepts context:
 
 ```bash
 # Clone the repo
 git clone https://github.com/iam-hussain/skillforge.git
 
-# Copy a skill to your Claude Code config
-mkdir -p ~/.claude/skills/component-splitter
-cp skillforge/skills/component-splitter/SKILL.md ~/.claude/skills/component-splitter/
-
-# Or just grab the raw file
+# Grab a single skill
 curl -o SKILL.md \
-  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/component-splitter/SKILL.md
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
-For other AI tools, paste the contents of `SKILL.md` and relevant `references/*.md` files into your system prompt or project instructions.
+Paste `SKILL.md` (and relevant `references/*.md` files) into your AI tool's system prompt, project context, or custom instructions.
 
 ---
 
@@ -61,18 +116,22 @@ For other AI tools, paste the contents of `SKILL.md` and relevant `references/*.
 
 ```
 skillforge/
-  skills/                      ← one folder per skill
-    component-splitter/
-      SKILL.md                 ← main skill prompt
-      references/              ← deep-dive reference docs
-        atomic-design.md
+  skills/                           <- one folder per skill
+    react-component-splitter/
+      SKILL.md                      <- main skill prompt
+      references/
         hooks-patterns.md
         compound-components.md
+    react-project-structure/
+      SKILL.md
+      references/
         feature-slice.md
-  marketplace.json             ← Claude Code marketplace catalog
-  plugin.json                  ← plugin manifest
-  CLAUDE.md                    ← repo context
-  CONTRIBUTING.md              ← contribution guide
+        atomic-design.md
+  .claude-plugin/
+    marketplace.json                <- Claude Code marketplace catalog
+  plugin.json                       <- plugin manifest
+  CLAUDE.md                         <- repo context
+  CONTRIBUTING.md                   <- contribution guide
 ```
 
 ---
@@ -83,26 +142,26 @@ Each skill follows this structure:
 
 ```
 skills/<skill-name>/
-  SKILL.md                     ← main prompt (under 500 lines)
-  references/                  ← detailed reference docs
+  SKILL.md                     <- main prompt (under 500 lines)
+  references/                  <- detailed reference docs
     pattern-name.md
 ```
 
-The `SKILL.md` contains YAML frontmatter (`name`, `description`) and the full prompt. Reference files provide deep-dive documentation that the main prompt links to.
+`SKILL.md` contains YAML frontmatter (`name`, `description`) and the full prompt. Reference files provide deep-dive documentation that the main prompt links to. Keep `SKILL.md` as the orchestration layer — move anything over ~100 lines into `references/`.
+
+---
+
+## Roadmap
+
+**Coming soon:** design-tokens, form-architecture, state-management, api-design, auth-patterns, and more.
+
+See the full roadmap in [CLAUDE.md](./CLAUDE.md#skill-roadmap).
 
 ---
 
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to add a new skill.
-
----
-
-## Roadmap
-
-See the full roadmap in [CLAUDE.md](./CLAUDE.md#skill-roadmap).
-
-**Coming soon:** design-tokens, form-architecture, state-management, api-design, auth-patterns, and more.
 
 ---
 

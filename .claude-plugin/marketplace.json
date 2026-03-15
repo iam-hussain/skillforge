@@ -1,0 +1,25 @@
+{
+  "name": "skillforge",
+  "owner": {
+    "name": "Jakir Hussain",
+    "github": "iam-hussain"
+  },
+  "version": "1.0.0",
+  "description": "Opinionated, production-grade coding skills for AI assistants",
+  "plugins": [
+    {
+      "name": "react-component-splitter-plugin",
+      "source": "./skills/react-component-splitter",
+      "description": "Split monolithic React components using hook extraction, compound components, and container/presentational patterns",
+      "category": "frontend",
+      "tags": ["react", "next.js", "vite", "typescript", "components"]
+    },
+    {
+      "name": "react-project-structure-plugin",
+      "source": "./skills/react-project-structure",
+      "description": "Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns",
+      "category": "frontend",
+      "tags": ["react", "next.js", "vite", "typescript", "architecture"]
+    }
+  ]
+}
