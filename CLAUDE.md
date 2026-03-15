@@ -1,6 +1,6 @@
 # Skillforge
 
-Claude Code skills for frontend and full-stack engineers.
+Opinionated, production-grade coding skills for AI assistants.
 
 Repository: https://github.com/iam-hussain/skillforge
 Owner: Jakir Hussain (@iam-hussain)
@@ -10,9 +10,9 @@ Stack focus: React, Next.js, Vite, Node.js, TypeScript
 
 ## What is Skillforge?
 
-Skillforge is a curated collection of Claude Code skills. Each skill
-teaches Claude how to complete a specific engineering task in a
-repeatable, production-grade way.
+Skillforge is a curated collection of engineering skills for AI coding
+assistants. Each skill teaches an AI assistant how to complete a specific
+engineering task in a repeatable, production-grade way.
 
 Skills in this repo are:
 - Opinionated but practical (real patterns used in production)
@@ -27,13 +27,16 @@ Skills in this repo are:
 ```
 skillforge/
   skills/                      ← one folder per skill
-    component-splitter/
+    react-component-splitter/
       SKILL.md                 ← main skill file
-      references/              ← deep-dive reference docs
-        atomic-design.md
+      references/
         hooks-patterns.md
         compound-components.md
+    react-project-structure/
+      SKILL.md
+      references/
         feature-slice.md
+        atomic-design.md
     [next-skill]/
       SKILL.md
       references/
@@ -74,7 +77,7 @@ Every skill in this repo must meet these standards before merging:
 
 ### Naming
 - [ ] Skill folder name matches the name field in frontmatter
-- [ ] Folder name is lowercase, hyphenated (component-splitter, not ComponentSplitter)
+- [ ] Folder name is lowercase, hyphenated (react-component-splitter, not ReactComponentSplitter)
 - [ ] Reference files are descriptive (hooks-patterns.md, not hooks.md)
 
 ---
@@ -82,7 +85,8 @@ Every skill in this repo must meet these standards before merging:
 ## Skill Roadmap
 
 ### Frontend
-- component-splitter     ✅ done
+- react-component-splitter ✅ done
+- react-project-structure  ✅ done
 - design-tokens          ← CSS variables, Tailwind config, theming
 - form-architecture      ← react-hook-form + zod patterns
 - state-management       ← Zustand vs Context decision guide
@@ -149,7 +153,8 @@ devops, tooling, testing
   "license": "MIT",
   "repository": "https://github.com/iam-hussain/skillforge",
   "skills": [
-    "component-splitter"
+    "react-component-splitter",
+    "react-project-structure"
   ]
 }
 ```
@@ -162,7 +167,7 @@ Always add the skill name to the skills array when a new skill is added.
 
 When asked to create a new skill for this repo:
 
-1. Read the existing component-splitter/SKILL.md as the quality benchmark
+1. Read the existing react-component-splitter/SKILL.md as the quality benchmark
 2. Follow the same structure: frontmatter → overview → step-by-step →
    reference routing → examples → anti-patterns
 3. Create the folder under skills/
@@ -191,10 +196,10 @@ When asked to create a new skill for this repo:
 /plugin marketplace add iam-hussain/skillforge
 
 # Install a specific skill
-/plugin install component-splitter-plugin
+/plugin install react-component-splitter-plugin
 
 # Or copy a skill manually
-mkdir -p ~/.claude/skills/component-splitter
-curl -o ~/.claude/skills/component-splitter/SKILL.md \
-  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/component-splitter/SKILL.md
+mkdir -p ~/.claude/skills/react-component-splitter
+curl -o ~/.claude/skills/react-component-splitter/SKILL.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```

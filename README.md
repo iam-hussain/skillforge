@@ -22,7 +22,8 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 
 | Skill | Description | Tags |
 |-------|-------------|------|
-| [component-splitter](./skills/component-splitter) | Split monolithic components using Feature-Slice, Atomic Design, Compound patterns | `react` `next.js` `vite` `typescript` |
+| [react-component-splitter](./skills/react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
+| [react-project-structure](./skills/react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
 
 ---
 
@@ -35,7 +36,8 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 /plugin marketplace add iam-hussain/skillforge
 
 # Install a specific skill
-/plugin install component-splitter-plugin
+/plugin install react-component-splitter-plugin
+/plugin install react-project-structure-plugin
 ```
 
 ### Cursor
@@ -45,8 +47,8 @@ Add a skill as a project rule:
 ```bash
 # Copy into your project's .cursor/rules/ directory
 mkdir -p .cursor/rules
-curl -o .cursor/rules/component-splitter.mdc \
-  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/component-splitter/SKILL.md
+curl -o .cursor/rules/react-component-splitter.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
 Or paste the contents of `SKILL.md` into **Cursor Settings > Rules for AI**.
@@ -58,7 +60,7 @@ Add a skill to your project rules:
 ```bash
 # Copy into your project root or .windsurfrules
 curl -o .windsurfrules \
-  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/component-splitter/SKILL.md
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
 Or paste the contents of `SKILL.md` into **Windsurf > AI Rules**.
@@ -71,7 +73,7 @@ Add a skill as a custom instruction:
 # Copy into your project's .github/ directory
 mkdir -p .github
 curl -o .github/copilot-instructions.md \
-  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/component-splitter/SKILL.md
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
 ### Cline / Roo Code
@@ -83,14 +85,14 @@ Paste the contents of `SKILL.md` into the **Custom Instructions** field in exten
 Pass the skill file as context:
 
 ```bash
-aider --read skills/component-splitter/SKILL.md
+aider --read skills/react-component-splitter/SKILL.md
 ```
 
 Or add it to your `.aider.conf.yml`:
 
 ```yaml
 read:
-  - skills/component-splitter/SKILL.md
+  - skills/react-component-splitter/SKILL.md
 ```
 
 ### Any Other AI Tool
@@ -103,7 +105,7 @@ git clone https://github.com/iam-hussain/skillforge.git
 
 # Grab a single skill
 curl -o SKILL.md \
-  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/component-splitter/SKILL.md
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
 Paste `SKILL.md` (and relevant `references/*.md` files) into your AI tool's system prompt, project context, or custom instructions.
@@ -114,19 +116,22 @@ Paste `SKILL.md` (and relevant `references/*.md` files) into your AI tool's syst
 
 ```
 skillforge/
-  skills/                      <- one folder per skill
-    component-splitter/
-      SKILL.md                 <- main skill prompt
-      references/              <- deep-dive reference docs
-        atomic-design.md
+  skills/                           <- one folder per skill
+    react-component-splitter/
+      SKILL.md                      <- main skill prompt
+      references/
         hooks-patterns.md
         compound-components.md
+    react-project-structure/
+      SKILL.md
+      references/
         feature-slice.md
+        atomic-design.md
   .claude-plugin/
-    marketplace.json           <- Claude Code marketplace catalog
-  plugin.json                  <- plugin manifest
-  CLAUDE.md                    <- repo context
-  CONTRIBUTING.md              <- contribution guide
+    marketplace.json                <- Claude Code marketplace catalog
+  plugin.json                       <- plugin manifest
+  CLAUDE.md                         <- repo context
+  CONTRIBUTING.md                   <- contribution guide
 ```
 
 ---

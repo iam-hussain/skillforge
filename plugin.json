@@ -1,11 +1,12 @@
 {
   "name": "skillforge",
-  "description": "Claude Code skills for frontend and full-stack engineers",
+  "description": "Opinionated, production-grade coding skills for AI assistants",
   "version": "1.0.0",
   "author": "Jakir Hussain",
   "license": "MIT",
   "repository": "https://github.com/iam-hussain/skillforge",
   "skills": [
-    "component-splitter"
+    "react-component-splitter",
+    "react-project-structure"
   ]
 }

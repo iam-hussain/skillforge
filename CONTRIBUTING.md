@@ -74,7 +74,7 @@ Categories: `engineering`, `frontend`, `backend`, `architecture`, `devops`, `too
 
 ```json
 {
-  "skills": ["component-splitter", "your-skill-name"]
+  "skills": ["react-component-splitter", "react-project-structure", "your-skill-name"]
 }
 ```
 
