@@ -20,6 +20,13 @@
       "description": "Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns",
       "category": "frontend",
       "tags": ["react", "next.js", "vite", "typescript", "architecture"]
+    },
+    {
+      "name": "shadcn-component-system-plugin",
+      "source": "./skills/shadcn-component-system",
+      "description": "Build variant-driven, theme-synced UI components using Shadcn UI and CVA with atomic decomposition",
+      "category": "frontend",
+      "tags": ["react", "shadcn", "cva", "tailwind", "typescript", "design-system"]
     }
   ]
 }

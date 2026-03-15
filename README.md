@@ -24,6 +24,7 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 |-------|-------------|------|
 | [react-component-splitter](./skills/react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
 | [react-project-structure](./skills/react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
+| [shadcn-component-system](./skills/shadcn-component-system) | Build variant-driven, theme-synced UI components using Shadcn UI and CVA with atomic decomposition | `react` `shadcn` `cva` `tailwind` `typescript` |
 
 ---
 
@@ -38,6 +39,7 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 # Install a specific skill
 /plugin install react-component-splitter-plugin
 /plugin install react-project-structure-plugin
+/plugin install shadcn-component-system-plugin
 ```
 
 ### Cursor
@@ -127,6 +129,11 @@ skillforge/
       references/
         feature-slice.md
         atomic-design.md
+    shadcn-component-system/
+      SKILL.md
+      references/
+        cva-patterns.md
+        shadcn-extension.md
   .claude-plugin/
     marketplace.json                <- Claude Code marketplace catalog
   plugin.json                       <- plugin manifest
