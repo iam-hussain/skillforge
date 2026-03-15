@@ -1,0 +1,18 @@
+{
+  "name": "skillforge",
+  "owner": {
+    "name": "Jakir Hussain",
+    "github": "iam-hussain"
+  },
+  "version": "1.0.0",
+  "description": "Claude Code skills for frontend and full-stack engineers",
+  "plugins": [
+    {
+      "name": "component-splitter-plugin",
+      "source": "./skills/component-splitter",
+      "description": "Split monolithic React components using Feature-Slice, Atomic Design, Compound patterns",
+      "category": "frontend",
+      "tags": ["react", "next.js", "vite", "typescript", "components"]
+    }
+  ]
+}
