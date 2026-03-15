@@ -185,7 +185,11 @@ Every skill must have its own section in README.md under `## Skills` with:
 2. **One-line description** — what the skill does
 3. **When to use** — triggers for when the skill should be activated
 4. **References included** — list of reference files with short descriptions
-5. **Install & Use** (inside a `<details>` collapsible) — full install
+5. **How to Use** (inside a `<details>` collapsible) — must include:
+   - A note that the skill auto-loads once installed
+   - 3-6 example prompts showing real usage scenarios for the skill
+   - A "What to expect" paragraph explaining what output the AI produces
+6. **Install** (inside a separate `<details>` collapsible) — full install
    commands with complete file paths for **every** supported tool:
    - Claude Code — `/plugin install`
    - Cursor — `.cursor/rules/<skill>.mdc`
