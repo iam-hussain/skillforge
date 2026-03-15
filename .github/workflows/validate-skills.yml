@@ -1,0 +1,92 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "skills/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Validate SKILL.md structure
+        run: |
+          set -e
+          errors=0
+
+          for skill_dir in skills/*/; do
+            skill_name=$(basename "$skill_dir")
+            skill_md="$skill_dir/SKILL.md"
+
+            echo "Validating skill: $skill_name"
+
+            # Check SKILL.md exists
+            if [ ! -f "$skill_md" ]; then
+              echo "  ERROR: SKILL.md not found in $skill_dir"
+              errors=$((errors + 1))
+              continue
+            fi
+
+            # Check SKILL.md line count (under 500)
+            line_count=$(wc -l < "$skill_md")
+            if [ "$line_count" -gt 500 ]; then
+              echo "  ERROR: SKILL.md is $line_count lines (max 500)"
+              errors=$((errors + 1))
+            else
+              echo "  OK: SKILL.md is $line_count lines"
+            fi
+
+            # Check frontmatter exists and has required fields
+            python3 -c "
+          import yaml, sys
+          content = open('$skill_md').read()
+          if not content.startswith('---'):
+              print('  ERROR: SKILL.md missing frontmatter')
+              sys.exit(1)
+          parts = content.split('---', 2)
+          if len(parts) < 3:
+              print('  ERROR: SKILL.md frontmatter not properly closed')
+              sys.exit(1)
+          meta = yaml.safe_load(parts[1])
+          if not meta or 'name' not in meta:
+              print('  ERROR: SKILL.md frontmatter missing \"name\"')
+              sys.exit(1)
+          if 'description' not in meta:
+              print('  ERROR: SKILL.md frontmatter missing \"description\"')
+              sys.exit(1)
+          print(f'  OK: frontmatter valid (name={meta[\"name\"]})')
+          " || errors=$((errors + 1))
+
+            # Check references/ directory exists
+            if [ ! -d "$skill_dir/references" ]; then
+              echo "  ERROR: references/ directory not found"
+              errors=$((errors + 1))
+            else
+              ref_count=$(ls -1 "$skill_dir/references/"*.md 2>/dev/null | wc -l)
+              echo "  OK: references/ directory exists ($ref_count files)"
+            fi
+
+            echo ""
+          done
+
+          if [ "$errors" -gt 0 ]; then
+            echo "FAILED: $errors error(s) found"
+            exit 1
+          fi
+
+          echo "All skills validated successfully!"
