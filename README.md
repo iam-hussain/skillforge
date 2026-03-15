@@ -41,7 +41,42 @@ Split monolithic React components into well-structured, reusable pieces. Covers 
 - `compound-components.md` — Tabs/Accordion/Modal implementation with React Context
 
 <details>
-<summary><strong>Install &amp; Use</strong></summary>
+<summary><strong>How to Use</strong></summary>
+
+Once installed (see install instructions below), the skill is automatically loaded into your AI assistant's context. You don't need to reference it manually — just describe what you need and the AI will follow the skill's patterns.
+
+**Example prompts you can use with any AI tool:**
+
+```
+Split the UserDashboard component — it's 400 lines with 6 useState hooks
+and mixes data fetching with rendering.
+```
+
+```
+This ProductCard component has nested JSX 5 levels deep. Decompose it
+into clean sub-components.
+```
+
+```
+Extract the form validation logic from SignupForm.tsx into a custom hook.
+```
+
+```
+Convert this monolithic Tabs component into a compound component pattern
+with internal context.
+```
+
+```
+Split this Next.js client component into server and client parts —
+only the search bar needs interactivity.
+```
+
+**What to expect:** The AI will analyze your component, identify which decomposition pattern fits (hook extraction, compound component, container/presentational, server/client split, or sub-component extraction), then produce complete code for every new file with barrel exports and a migration note showing how imports change at the call site.
+
+</details>
+
+<details>
+<summary><strong>Install</strong></summary>
 
 #### Claude Code
 
@@ -157,7 +192,7 @@ Or append to an existing `.goosehints` file.
 
 #### ChatGPT / Gemini / Any Chat LLM
 
-Copy the contents of [`SKILL.md`](./skills/react-component-splitter/SKILL.md) and paste into your system prompt, custom instructions, or project context.
+Copy the contents of [`SKILL.md`](./skills/react-component-splitter/SKILL.md) and paste into your system prompt, custom instructions, or project context. Then paste your component code and ask the AI to split it.
 
 #### Manual (curl)
 
@@ -188,7 +223,44 @@ Scaffold and organize React project directory structure using Feature-Slice arch
 - `atomic-design.md` — atoms/molecules/organisms/templates/pages mapping to React
 
 <details>
-<summary><strong>Install &amp; Use</strong></summary>
+<summary><strong>How to Use</strong></summary>
+
+Once installed (see install instructions below), the skill is automatically loaded into your AI assistant's context. You don't need to reference it manually — just describe what you need and the AI will follow the skill's patterns.
+
+**Example prompts you can use with any AI tool:**
+
+```
+Scaffold a new Next.js App Router project structure for an e-commerce
+platform with auth, products, cart, and checkout features.
+```
+
+```
+I have a flat src/components/ folder with 40+ components. Reorganize
+it using Feature-Slice architecture with atomic design hierarchy.
+```
+
+```
+Where should I put a new PaymentMethodSelector component? It's used
+only in the checkout feature right now.
+```
+
+```
+Set up the folder structure for a new "notifications" feature in my
+Vite + React project. It needs components, hooks, types, and utils.
+```
+
+```
+My SearchBar component is currently in features/products/components/
+but now I need it in the header and the admin panel too. How should
+I promote it?
+```
+
+**What to expect:** The AI will detect your stack (Next.js App Router, Pages Router, or Vite), then produce a complete directory tree with file placements following Feature-Slice architecture. Components are placed at the correct atomic level (atoms in `components/ui/`, molecules in `components/shared/`, organisms in `features/*/components/`). Barrel exports, naming conventions, and import rules are enforced automatically.
+
+</details>
+
+<details>
+<summary><strong>Install</strong></summary>
 
 #### Claude Code
 
@@ -304,7 +376,7 @@ Or append to an existing `.goosehints` file.
 
 #### ChatGPT / Gemini / Any Chat LLM
 
-Copy the contents of [`SKILL.md`](./skills/react-project-structure/SKILL.md) and paste into your system prompt, custom instructions, or project context.
+Copy the contents of [`SKILL.md`](./skills/react-project-structure/SKILL.md) and paste into your system prompt, custom instructions, or project context. Then describe your project and ask the AI to scaffold or reorganize the structure.
 
 #### Manual (curl)
 
@@ -335,7 +407,52 @@ Build variant-driven, theme-synced UI components using Shadcn UI and class-varia
 - `shadcn-extension.md` — 4 patterns for wrapping and extending Shadcn primitives without forking
 
 <details>
-<summary><strong>Install &amp; Use</strong></summary>
+<summary><strong>How to Use</strong></summary>
+
+Once installed (see install instructions below), the skill is automatically loaded into your AI assistant's context. You don't need to reference it manually — just describe what you need and the AI will follow the skill's patterns.
+
+**Example prompts you can use with any AI tool:**
+
+```
+Build a StatusBadge component with CVA variants for success, warning,
+error, info, and neutral states. It should support sm/md/lg sizes and
+an optional dot indicator.
+```
+
+```
+I need a data table component that extends Shadcn's Table with loading
+skeletons, empty state, striped rows, and compact/relaxed density variants.
+```
+
+```
+Create a ConfirmDialog molecule that wraps Shadcn's AlertDialog with
+a simpler API — just trigger, title, description, and onConfirm.
+```
+
+```
+This component uses className={isActive ? 'bg-blue-500' : 'bg-gray-200'}.
+Refactor it to use CVA variants with semantic theme tokens instead of
+raw Tailwind colors.
+```
+
+```
+Decompose this dashboard card design into atoms (Badge, Avatar),
+a molecule (StatCard), and an organism (MetricsGrid). Use CVA for
+all visual variants and Shadcn primitives where they exist.
+```
+
+```
+I need an IconButton that extends Shadcn's Button with color variants
+(default, primary, destructive) and a rounded option. Don't modify
+the original Button source.
+```
+
+**What to expect:** The AI will first check if Shadcn primitives exist for the requirement, then decompose the UI into atoms/molecules/organisms. Every component gets a CVA variant schema (no inline conditional classes), uses semantic theme tokens (no raw colors like `blue-500`), preserves native HTML attributes via `ComponentPropsWithoutRef`, and forwards refs. Output includes complete TypeScript code, CVA schema, file placement, and usage examples.
+
+</details>
+
+<details>
+<summary><strong>Install</strong></summary>
 
 #### Claude Code
 
@@ -451,7 +568,7 @@ Or append to an existing `.goosehints` file.
 
 #### ChatGPT / Gemini / Any Chat LLM
 
-Copy the contents of [`SKILL.md`](./skills/shadcn-component-system/SKILL.md) and paste into your system prompt, custom instructions, or project context.
+Copy the contents of [`SKILL.md`](./skills/shadcn-component-system/SKILL.md) and paste into your system prompt, custom instructions, or project context. Then describe the component you need and the AI will build it following CVA + atomic design patterns.
 
 #### Manual (curl)
 
@@ -475,21 +592,23 @@ curl -o shadcn-extension.md \
 
 Skillforge skills work with any AI coding tool that accepts system prompts or custom instructions. Here's the full compatibility matrix:
 
-| Tool | Instructions File | Method |
-|------|-------------------|--------|
-| **Claude Code** | Plugin marketplace | `/plugin install` |
-| **Cursor** | `.cursor/rules/<skill>.mdc` | Project rule file |
-| **Windsurf** | `.windsurfrules` | Project rule file |
-| **GitHub Copilot** | `.github/copilot-instructions.md` | Custom instruction file |
-| **Cline / Roo Code** | `.clinerules` | Project rule file |
-| **Continue** | `.continue/rules/<skill>.md` | Project rule file |
-| **Aider** | `.aider.conf.yml` → `read:` | Context file |
-| **Zed** | `.rules` | Project rule file |
-| **Codex CLI** | `AGENTS.md` | Project instruction file |
-| **Gemini CLI** | `GEMINI.md` | Project context file |
-| **JetBrains / Junie** | `.junie/guidelines.md` | Project guideline file |
-| **Goose** | `.goosehints` | Project hints file |
-| **ChatGPT / Gemini / Any LLM** | Paste into prompt | System prompt / custom instructions |
+| Tool | Instructions File | How It Loads |
+|------|-------------------|--------------|
+| **Claude Code** | Plugin marketplace | Auto — loaded on install via `/plugin install` |
+| **Cursor** | `.cursor/rules/<skill>.mdc` | Auto — rules are loaded when working in the project |
+| **Windsurf** | `.windsurfrules` | Auto — loaded when Windsurf opens the project |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Auto — Copilot reads this file for every chat/edit |
+| **Cline / Roo Code** | `.clinerules` | Auto — loaded when Cline starts in the project |
+| **Continue** | `.continue/rules/<skill>.md` | Auto — rules are injected into Agent, Chat, and Edit modes |
+| **Aider** | `.aider.conf.yml` → `read:` | Auto — loaded on every Aider session start |
+| **Zed** | `.rules` | Auto — injected into every Agent Panel interaction |
+| **Codex CLI** | `AGENTS.md` | Auto — Codex reads this file at the start of every run |
+| **Gemini CLI** | `GEMINI.md` | Auto — Gemini loads this with every prompt |
+| **JetBrains / Junie** | `.junie/guidelines.md` | Auto — Junie adds guidelines to every task |
+| **Goose** | `.goosehints` | Auto — Goose reads hints when starting in the directory |
+| **ChatGPT / Gemini / Any LLM** | Paste into prompt | Manual — paste `SKILL.md` contents into system prompt or custom instructions, then ask your question |
+
+**All tools except chat LLMs load skills automatically** — once the file is in place, every conversation in that project benefits from the skill without you needing to reference it.
 
 ---
 
