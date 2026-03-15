@@ -22,93 +22,275 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 
 | Skill | Description | Tags |
 |-------|-------------|------|
-| [react-component-splitter](./skills/react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
-| [react-project-structure](./skills/react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
+| [react-component-splitter](#react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
+| [react-project-structure](#react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
+| [shadcn-component-system](#shadcn-component-system) | Build variant-driven, theme-synced UI components using Shadcn UI and CVA with atomic decomposition | `react` `shadcn` `cva` `tailwind` `typescript` |
 
 ---
 
-## Installation
+## Quick Start
 
-### Claude Code
+All skills can be installed via the Claude Code marketplace or manually via curl. Pick a skill below for tool-specific instructions.
 
 ```bash
-# Add the marketplace
+# Claude Code — install any skill in one command
 /plugin marketplace add iam-hussain/skillforge
-
-# Install a specific skill
-/plugin install react-component-splitter-plugin
-/plugin install react-project-structure-plugin
+/plugin install <skill-name>-plugin
 ```
 
-### Cursor
+---
 
-Add a skill as a project rule:
+## Skills
+
+### react-component-splitter
+
+Split monolithic React components into well-structured, reusable pieces. Covers hook extraction, compound components, container/presentational splits, and server/client separation.
+
+**When to use:** A React component is too large (150+ lines), has 3+ useState calls, mixes fetch logic with rendering, or has deeply nested JSX.
+
+**References included:**
+- `hooks-patterns.md` — hook extraction patterns for state, data fetching, forms, and toggles
+- `compound-components.md` — Tabs/Accordion/Modal implementation with React Context
+
+<details>
+<summary><strong>Install &amp; Use</strong></summary>
+
+#### Claude Code
 
 ```bash
-# Copy into your project's .cursor/rules/ directory
+/plugin marketplace add iam-hussain/skillforge
+/plugin install react-component-splitter-plugin
+```
+
+#### Cursor
+
+```bash
 mkdir -p .cursor/rules
 curl -o .cursor/rules/react-component-splitter.mdc \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
-Or paste the contents of `SKILL.md` into **Cursor Settings > Rules for AI**.
+Or paste `SKILL.md` contents into **Cursor Settings > Rules for AI**.
 
-### Windsurf
-
-Add a skill to your project rules:
+#### Windsurf
 
 ```bash
-# Copy into your project root or .windsurfrules
 curl -o .windsurfrules \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
-Or paste the contents of `SKILL.md` into **Windsurf > AI Rules**.
+Or paste `SKILL.md` contents into **Windsurf > AI Rules**.
 
-### GitHub Copilot
-
-Add a skill as a custom instruction:
+#### GitHub Copilot
 
 ```bash
-# Copy into your project's .github/ directory
 mkdir -p .github
 curl -o .github/copilot-instructions.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
-### Cline / Roo Code
+#### Cline / Roo Code
 
-Paste the contents of `SKILL.md` into the **Custom Instructions** field in extension settings, or add it to a `.clinerules` file in your project root.
+Paste `SKILL.md` contents into **Custom Instructions** in extension settings, or add to `.clinerules` in your project root.
 
-### Aider
-
-Pass the skill file as context:
+#### Aider
 
 ```bash
 aider --read skills/react-component-splitter/SKILL.md
 ```
 
-Or add it to your `.aider.conf.yml`:
+Or add to `.aider.conf.yml`:
 
 ```yaml
 read:
   - skills/react-component-splitter/SKILL.md
 ```
 
-### Any Other AI Tool
-
-Every skill is a plain markdown file. Use it however your tool accepts context:
+#### Manual
 
 ```bash
-# Clone the repo
-git clone https://github.com/iam-hussain/skillforge.git
-
-# Grab a single skill
 curl -o SKILL.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
 ```
 
-Paste `SKILL.md` (and relevant `references/*.md` files) into your AI tool's system prompt, project context, or custom instructions.
+Include the reference files for full coverage:
+
+```bash
+curl -o hooks-patterns.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/references/hooks-patterns.md
+curl -o compound-components.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/references/compound-components.md
+```
+
+</details>
+
+---
+
+### react-project-structure
+
+Scaffold and organize React project directory structure using Feature-Slice architecture and Atomic Design component hierarchy.
+
+**When to use:** Starting a new React project, reorganizing an existing codebase, or deciding where a new component/feature should live.
+
+**References included:**
+- `feature-slice.md` — feature folder rules, cross-feature communication, code promotion
+- `atomic-design.md` — atoms/molecules/organisms/templates/pages mapping to React
+
+<details>
+<summary><strong>Install &amp; Use</strong></summary>
+
+#### Claude Code
+
+```bash
+/plugin marketplace add iam-hussain/skillforge
+/plugin install react-project-structure-plugin
+```
+
+#### Cursor
+
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/react-project-structure.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Cursor Settings > Rules for AI**.
+
+#### Windsurf
+
+```bash
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Windsurf > AI Rules**.
+
+#### GitHub Copilot
+
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+#### Cline / Roo Code
+
+Paste `SKILL.md` contents into **Custom Instructions** in extension settings, or add to `.clinerules` in your project root.
+
+#### Aider
+
+```bash
+aider --read skills/react-project-structure/SKILL.md
+```
+
+Or add to `.aider.conf.yml`:
+
+```yaml
+read:
+  - skills/react-project-structure/SKILL.md
+```
+
+#### Manual
+
+```bash
+curl -o SKILL.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+Include the reference files for full coverage:
+
+```bash
+curl -o feature-slice.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/references/feature-slice.md
+curl -o atomic-design.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/references/atomic-design.md
+```
+
+</details>
+
+---
+
+### shadcn-component-system
+
+Build variant-driven, theme-synced UI components using Shadcn UI and class-variance-authority (CVA) with atomic decomposition and prop-driven scalability.
+
+**When to use:** Building or extending UI components with Shadcn UI, creating a design system with CVA variants, enforcing semantic theming with CSS variables, or decomposing complex UI into atoms/molecules/organisms.
+
+**References included:**
+- `cva-patterns.md` — variant schemas, compound variants, state variants, composition patterns
+- `shadcn-extension.md` — 4 patterns for wrapping and extending Shadcn primitives without forking
+
+<details>
+<summary><strong>Install &amp; Use</strong></summary>
+
+#### Claude Code
+
+```bash
+/plugin marketplace add iam-hussain/skillforge
+/plugin install shadcn-component-system-plugin
+```
+
+#### Cursor
+
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/shadcn-component-system.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Cursor Settings > Rules for AI**.
+
+#### Windsurf
+
+```bash
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Or paste `SKILL.md` contents into **Windsurf > AI Rules**.
+
+#### GitHub Copilot
+
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+#### Cline / Roo Code
+
+Paste `SKILL.md` contents into **Custom Instructions** in extension settings, or add to `.clinerules` in your project root.
+
+#### Aider
+
+```bash
+aider --read skills/shadcn-component-system/SKILL.md
+```
+
+Or add to `.aider.conf.yml`:
+
+```yaml
+read:
+  - skills/shadcn-component-system/SKILL.md
+```
+
+#### Manual
+
+```bash
+curl -o SKILL.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+Include the reference files for full coverage:
+
+```bash
+curl -o cva-patterns.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/cva-patterns.md
+curl -o shadcn-extension.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/shadcn-extension.md
+```
+
+</details>
 
 ---
 
@@ -127,6 +309,11 @@ skillforge/
       references/
         feature-slice.md
         atomic-design.md
+    shadcn-component-system/
+      SKILL.md
+      references/
+        cva-patterns.md
+        shadcn-extension.md
   .claude-plugin/
     marketplace.json                <- Claude Code marketplace catalog
   plugin.json                       <- plugin manifest

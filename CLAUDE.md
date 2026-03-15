@@ -87,6 +87,7 @@ Every skill in this repo must meet these standards before merging:
 ### Frontend
 - react-component-splitter ✅ done
 - react-project-structure  ✅ done
+- shadcn-component-system  ✅ done
 - design-tokens          ← CSS variables, Tailwind config, theming
 - form-architecture      ← react-hook-form + zod patterns
 - state-management       ← Zustand vs Context decision guide
@@ -174,7 +175,28 @@ When asked to create a new skill for this repo:
 4. Add reference files to references/ for any content over 100 lines
 5. Update .claude-plugin/marketplace.json plugins array
 6. Update plugin.json skills array
-7. Update README.md skills table
+7. Update README.md — **always** add a per-skill section (see below)
+
+### README Skill Section (Required)
+
+Every skill must have its own section in README.md under `## Skills` with:
+
+1. **Heading** — `### skill-name` (linked from the Available Skills table)
+2. **One-line description** — what the skill does
+3. **When to use** — triggers for when the skill should be activated
+4. **References included** — list of reference files with short descriptions
+5. **Install & Use** (inside a `<details>` collapsible) — install commands
+   for every supported tool:
+   - Claude Code (`/plugin install`)
+   - Cursor (`.cursor/rules/`)
+   - Windsurf (`.windsurfrules`)
+   - GitHub Copilot (`.github/copilot-instructions.md`)
+   - Cline / Roo Code (Custom Instructions / `.clinerules`)
+   - Aider (`--read` flag or `.aider.conf.yml`)
+   - Manual (`curl` for SKILL.md + all reference files)
+
+Use the existing skills in README.md as the template. Copy the structure
+exactly, replacing skill name, description, and reference file names.
 
 ---
 
