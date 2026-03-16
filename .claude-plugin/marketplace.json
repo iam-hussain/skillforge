@@ -4,7 +4,7 @@
     "name": "Jakir Hussain",
     "github": "iam-hussain"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Opinionated, production-grade coding skills for AI assistants",
   "plugins": [
     {
@@ -30,6 +30,14 @@
       "category": "frontend",
       "version": "1.0.0",
       "tags": ["react", "shadcn", "cva", "tailwind", "typescript", "design-system"]
+    },
+    {
+      "name": "centralized-config-plugin",
+      "source": "./skills/centralized-config",
+      "description": "Architect centralized monorepo configuration with ESLint, TypeScript, Tailwind presets, and Turborepo pipelines using inheritance-first patterns",
+      "category": "architecture",
+      "version": "1.0.0",
+      "tags": ["monorepo", "turborepo", "eslint", "typescript", "tailwind", "config"]
     }
   ]
 }
