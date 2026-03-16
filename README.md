@@ -25,6 +25,7 @@ Skillforge is a curated collection of engineering skills — structured prompts 
 | [react-component-splitter](#react-component-splitter) | Split monolithic React components using hook extraction, compound components, and container/presentational patterns | `react` `next.js` `vite` `typescript` |
 | [react-project-structure](#react-project-structure) | Scaffold and organize React project directory structure using Feature-Slice and Atomic Design patterns | `react` `next.js` `vite` `typescript` |
 | [shadcn-component-system](#shadcn-component-system) | Build variant-driven, theme-synced UI components using Shadcn UI and CVA with atomic decomposition | `react` `shadcn` `cva` `tailwind` `typescript` |
+| [centralized-config](#centralized-config) | Architect centralized monorepo configuration with ESLint, TypeScript, Tailwind presets, and Turborepo pipelines | `monorepo` `turborepo` `eslint` `typescript` `tailwind` `config` |
 
 ---
 
@@ -46,6 +47,7 @@ Use the plugin marketplace to install skills directly:
 /plugin install react-component-splitter-plugin
 /plugin install react-project-structure-plugin
 /plugin install shadcn-component-system-plugin
+/plugin install centralized-config-plugin
 ```
 
 Skills are loaded automatically in every conversation within your project.
@@ -70,6 +72,10 @@ curl -o .cursor/rules/react-project-structure.mdc \
 # shadcn-component-system
 curl -o .cursor/rules/shadcn-component-system.mdc \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+
+# centralized-config
+curl -o .cursor/rules/centralized-config.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
 ```
 
 **Alternative:** Open **Cursor Settings > Rules for AI** and paste the contents of each `SKILL.md` file.
@@ -93,6 +99,8 @@ echo -e "\n---\n" >> .windsurfrules
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> .windsurfrules
 echo -e "\n---\n" >> .windsurfrules
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> .windsurfrules
+echo -e "\n---\n" >> .windsurfrules
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> .windsurfrules
 ```
 
 **Alternative:** Open **Windsurf > AI Rules** and paste the contents.
@@ -118,6 +126,8 @@ echo -e "\n---\n" >> .github/copilot-instructions.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> .github/copilot-instructions.md
 echo -e "\n---\n" >> .github/copilot-instructions.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> .github/copilot-instructions.md
+echo -e "\n---\n" >> .github/copilot-instructions.md
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> .github/copilot-instructions.md
 ```
 
 Skills are loaded automatically for every Copilot chat and inline edit.
@@ -139,6 +149,8 @@ echo -e "\n---\n" >> .clinerules
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> .clinerules
 echo -e "\n---\n" >> .clinerules
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> .clinerules
+echo -e "\n---\n" >> .clinerules
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> .clinerules
 ```
 
 **Alternative:** Open the Cline/Roo Code extension settings and paste `SKILL.md` contents into **Custom Instructions**.
@@ -165,6 +177,10 @@ curl -o .continue/rules/react-project-structure.md \
 # shadcn-component-system
 curl -o .continue/rules/shadcn-component-system.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+
+# centralized-config
+curl -o .continue/rules/centralized-config.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
 ```
 
 **Alternative:** Add to `.continuerules` in your project root, or reference in `config.yaml`:
@@ -174,6 +190,7 @@ rules:
   - .continue/rules/react-component-splitter.md
   - .continue/rules/react-project-structure.md
   - .continue/rules/shadcn-component-system.md
+  - .continue/rules/centralized-config.md
 ```
 
 Skills are injected automatically into Agent, Chat, and Edit modes.
@@ -189,7 +206,8 @@ Pass skill files as context using the `--read` flag or `.aider.conf.yml`:
 aider \
   --read skills/react-component-splitter/SKILL.md \
   --read skills/react-project-structure/SKILL.md \
-  --read skills/shadcn-component-system/SKILL.md
+  --read skills/shadcn-component-system/SKILL.md \
+  --read skills/centralized-config/SKILL.md
 ```
 
 **Persistent setup** — add to `.aider.conf.yml` in your project root:
@@ -199,6 +217,7 @@ read:
   - skills/react-component-splitter/SKILL.md
   - skills/react-project-structure/SKILL.md
   - skills/shadcn-component-system/SKILL.md
+  - skills/centralized-config/SKILL.md
 ```
 
 First, clone the repo or download the skill files:
@@ -208,6 +227,7 @@ git clone https://github.com/iam-hussain/skillforge.git skills-repo
 cp skills-repo/skills/react-component-splitter/SKILL.md skills/react-component-splitter/SKILL.md
 cp skills-repo/skills/react-project-structure/SKILL.md skills/react-project-structure/SKILL.md
 cp skills-repo/skills/shadcn-component-system/SKILL.md skills/shadcn-component-system/SKILL.md
+cp skills-repo/skills/centralized-config/SKILL.md skills/centralized-config/SKILL.md
 ```
 
 Skills are loaded automatically on every Aider session start.
@@ -229,6 +249,8 @@ echo -e "\n---\n" >> .rules
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> .rules
 echo -e "\n---\n" >> .rules
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> .rules
+echo -e "\n---\n" >> .rules
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> .rules
 ```
 
 **Alternative:** Open the **Rules Library** in Zed's Agent Panel settings and add each skill as a saved rule.
@@ -252,6 +274,8 @@ echo -e "\n---\n" >> AGENTS.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> AGENTS.md
 echo -e "\n---\n" >> AGENTS.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> AGENTS.md
+echo -e "\n---\n" >> AGENTS.md
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> AGENTS.md
 ```
 
 **Global setup** — add to `~/.codex/AGENTS.md` to apply across all projects.
@@ -275,6 +299,8 @@ echo -e "\n---\n" >> GEMINI.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> GEMINI.md
 echo -e "\n---\n" >> GEMINI.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> GEMINI.md
+echo -e "\n---\n" >> GEMINI.md
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> GEMINI.md
 ```
 
 **Global setup** — add to `~/.gemini/GEMINI.md` to apply across all projects.
@@ -302,6 +328,8 @@ echo -e "\n---\n" >> .junie/guidelines.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> .junie/guidelines.md
 echo -e "\n---\n" >> .junie/guidelines.md
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> .junie/guidelines.md
+echo -e "\n---\n" >> .junie/guidelines.md
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> .junie/guidelines.md
 ```
 
 **Alternative:** Open **Settings > Tools > Junie > Project Settings > Guidelines** and paste the contents.
@@ -325,6 +353,8 @@ echo -e "\n---\n" >> .goosehints
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md >> .goosehints
 echo -e "\n---\n" >> .goosehints
 curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md >> .goosehints
+echo -e "\n---\n" >> .goosehints
+curl -s https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md >> .goosehints
 ```
 
 **Global setup** — add to `~/.config/goose/.goosehints` to apply across all projects.
@@ -343,6 +373,7 @@ Skill files:
 - [`react-component-splitter/SKILL.md`](./skills/react-component-splitter/SKILL.md)
 - [`react-project-structure/SKILL.md`](./skills/react-project-structure/SKILL.md)
 - [`shadcn-component-system/SKILL.md`](./skills/shadcn-component-system/SKILL.md)
+- [`centralized-config/SKILL.md`](./skills/centralized-config/SKILL.md)
 
 **Alternative:** Create a custom GPT with the skill contents as its instructions for a reusable assistant.
 
@@ -358,6 +389,7 @@ Skill files:
 - [`react-component-splitter/SKILL.md`](./skills/react-component-splitter/SKILL.md)
 - [`react-project-structure/SKILL.md`](./skills/react-project-structure/SKILL.md)
 - [`shadcn-component-system/SKILL.md`](./skills/shadcn-component-system/SKILL.md)
+- [`centralized-config/SKILL.md`](./skills/centralized-config/SKILL.md)
 
 **Tip:** Use Gemini's "Gems" feature to create a saved assistant with the skill pre-loaded.
 
@@ -378,6 +410,8 @@ curl -o react-project-structure.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
 curl -o shadcn-component-system.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+curl -o centralized-config.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
 ```
 
 **Don't forget the reference files** for deeper coverage:
@@ -400,6 +434,12 @@ curl -o cva-patterns.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/cva-patterns.md
 curl -o shadcn-extension.md \
   https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/shadcn-extension.md
+
+# centralized-config references
+curl -o monorepo-config-patterns.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/references/monorepo-config-patterns.md
+curl -o tailwind-preset-protocol.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/references/tailwind-preset-protocol.md
 ```
 
 Paste the `SKILL.md` contents (and optionally reference files) into your tool's system prompt, project context, or custom instructions field.
@@ -848,6 +888,158 @@ curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/sha
 
 ---
 
+### centralized-config
+
+Architect centralized monorepo configuration with inheritance-first patterns — ESLint, TypeScript, Prettier, Tailwind presets, Zod schemas, and Turborepo pipelines that eliminate config drift across workspaces.
+
+**When to use:** Setting up a new monorepo, adding a workspace to an existing one, centralizing scattered config files, enforcing consistent linting/formatting/typing across apps, or creating shared Tailwind presets.
+
+**References included:**
+- `monorepo-config-patterns.md` — ESLint flat config, TypeScript inheritance chains, Prettier zero-override policy, Vitest centralization, dependency direction rules
+- `tailwind-preset-protocol.md` — Tailwind preset architecture, CSS variable theming, multi-app theme support, content path rules
+
+<details>
+<summary><strong>How to Use</strong></summary>
+
+Once installed (see [Installation Guide](#installation-guide)), the skill is automatically loaded into your AI assistant's context. You don't need to reference it manually — just describe what you need and the AI will follow the skill's patterns.
+
+**Example prompts you can use with any AI tool:**
+
+```
+Set up the @repo/config package for our new Turborepo monorepo with
+a Next.js app, a Vite admin panel, and a Node.js API server.
+```
+
+```
+Our monorepo has 4 apps each with their own ESLint config — 200+ lines
+of duplicated rules. Centralize them into a shared @repo/config package.
+```
+
+```
+Add a new Vite app to our monorepo. It should inherit all configs from
+@repo/config with zero standalone config files.
+```
+
+```
+Create a shared Tailwind preset with semantic color tokens so our web
+and admin apps can have different themes using the same component library.
+```
+
+```
+We have Zod schemas duplicated in the frontend and backend. Set up a
+shared @repo/shared package so both sides use the same validation.
+```
+
+```
+Our turbo.json doesn't invalidate caches when shared configs change.
+Fix the pipeline so config changes trigger workspace-wide rebuilds.
+```
+
+**What to expect:** The AI will identify whether the change belongs in the Base (`@repo/config`) or App/Module layer, provide the central config update with complete code, show how the consumer app inherits it, map the dependency graph of affected workspaces, and explain why the approach prevents config drift.
+
+</details>
+
+<details>
+<summary><strong>Install</strong></summary>
+
+**Claude Code:**
+```bash
+/plugin install centralized-config-plugin
+```
+
+**Cursor:**
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/centralized-config.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Windsurf:**
+```bash
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**GitHub Copilot:**
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Cline / Roo Code:**
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Continue:**
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/centralized-config.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Aider:**
+```bash
+aider \
+  --read skills/centralized-config/SKILL.md \
+  --read skills/centralized-config/references/monorepo-config-patterns.md \
+  --read skills/centralized-config/references/tailwind-preset-protocol.md
+```
+
+Or add to `.aider.conf.yml`:
+```yaml
+read:
+  - skills/centralized-config/SKILL.md
+  - skills/centralized-config/references/monorepo-config-patterns.md
+  - skills/centralized-config/references/tailwind-preset-protocol.md
+```
+
+**Zed:**
+```bash
+curl -o .rules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Codex CLI (OpenAI):**
+```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Gemini CLI:**
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**JetBrains AI / Junie:**
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**Goose:**
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+```
+
+**ChatGPT / Gemini / Any Chat LLM:** Copy the contents of [`SKILL.md`](./skills/centralized-config/SKILL.md) and paste into the system prompt or custom instructions.
+
+**Manual (curl) — SKILL.md + all reference files:**
+```bash
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/SKILL.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/references/monorepo-config-patterns.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/centralized-config/references/tailwind-preset-protocol.md
+```
+
+</details>
+
+---
+
 ## Supported Tools
 
 Skillforge skills work with any AI coding tool that accepts system prompts or custom instructions. Here's the full compatibility matrix:
@@ -892,6 +1084,11 @@ skillforge/
       references/
         cva-patterns.md
         shadcn-extension.md
+    centralized-config/
+      SKILL.md
+      references/
+        monorepo-config-patterns.md
+        tailwind-preset-protocol.md
   .claude-plugin/
     marketplace.json                <- Claude Code marketplace catalog
   plugin.json                       <- plugin manifest
