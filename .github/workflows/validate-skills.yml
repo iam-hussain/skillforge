@@ -5,19 +5,23 @@ on:
     branches: [main]
     paths:
       - "skills/**"
+      - ".claude-plugin/marketplace.json"
+      - "plugin.json"
   pull_request:
     branches: [main]
     paths:
       - "skills/**"
+      - ".claude-plugin/marketplace.json"
+      - "plugin.json"
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -51,7 +55,7 @@ jobs:
               echo "  OK: SKILL.md is $line_count lines"
             fi
 
-            # Check frontmatter exists and has required fields
+            # Check frontmatter: required fields, name matches folder, description starts with "Use when"
             python3 -c "
           import yaml, sys
           content = open('$skill_md').read()
@@ -69,16 +73,28 @@ jobs:
           if 'description' not in meta:
               print('  ERROR: SKILL.md frontmatter missing \"description\"')
               sys.exit(1)
+          if meta['name'] != '$skill_name':
+              print(f'  ERROR: frontmatter name \"{meta[\"name\"]}\" does not match folder name \"$skill_name\"')
+              sys.exit(1)
+          desc = meta.get('description', '')
+          if not desc.startswith('Use when'):
+              print(f'  ERROR: description must start with \"Use when\", got: \"{desc[:40]}...\"')
+              sys.exit(1)
           print(f'  OK: frontmatter valid (name={meta[\"name\"]})')
           " || errors=$((errors + 1))
 
-            # Check references/ directory exists
+            # Check references/ directory exists and contains at least one .md file
             if [ ! -d "$skill_dir/references" ]; then
               echo "  ERROR: references/ directory not found"
               errors=$((errors + 1))
             else
               ref_count=$(ls -1 "$skill_dir/references/"*.md 2>/dev/null | wc -l)
-              echo "  OK: references/ directory exists ($ref_count files)"
+              if [ "$ref_count" -eq 0 ]; then
+                echo "  ERROR: references/ directory contains no .md files"
+                errors=$((errors + 1))
+              else
+                echo "  OK: references/ directory exists ($ref_count .md files)"
+              fi
             fi
 
             echo ""
@@ -90,3 +106,74 @@ jobs:
           fi
 
           echo "All skills validated successfully!"
+
+  validate-manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate marketplace.json and plugin.json consistency
+        run: |
+          set -e
+          python3 -c "
+          import json, os, sys
+
+          errors = 0
+
+          # Load both files
+          with open('.claude-plugin/marketplace.json') as f:
+              marketplace = json.load(f)
+          with open('plugin.json') as f:
+              plugin = json.load(f)
+
+          # Collect skill names from marketplace plugin sources
+          marketplace_skills = set()
+          for p in marketplace.get('plugins', []):
+              source = p.get('source', '')
+              # source is like './skills/skill-name' — extract skill name
+              skill_name = source.replace('./skills/', '')
+              marketplace_skills.add(skill_name)
+
+              # Verify source path exists on disk
+              source_path = source.lstrip('./')
+              if not os.path.isdir(source_path):
+                  print(f'ERROR: marketplace plugin \"{p[\"name\"]}\" source path does not exist: {source}')
+                  errors += 1
+              else:
+                  print(f'OK: marketplace plugin \"{p[\"name\"]}\" source exists: {source}')
+
+          # Collect skill names from plugin.json
+          plugin_skills = set(plugin.get('skills', []))
+
+          # Check consistency
+          only_in_marketplace = marketplace_skills - plugin_skills
+          only_in_plugin = plugin_skills - marketplace_skills
+
+          if only_in_marketplace:
+              print(f'ERROR: skills in marketplace.json but not in plugin.json: {only_in_marketplace}')
+              errors += 1
+          if only_in_plugin:
+              print(f'ERROR: skills in plugin.json but not in marketplace.json: {only_in_plugin}')
+              errors += 1
+
+          if not only_in_marketplace and not only_in_plugin:
+              print(f'OK: marketplace.json and plugin.json list the same {len(plugin_skills)} skill(s)')
+
+          # Check that each skill directory exists on disk
+          for skill in plugin_skills:
+              skill_path = f'skills/{skill}'
+              if not os.path.isdir(skill_path):
+                  print(f'ERROR: skill \"{skill}\" listed in plugin.json but directory does not exist: {skill_path}')
+                  errors += 1
+
+          if errors > 0:
+              print(f'FAILED: {errors} error(s) found')
+              sys.exit(1)
+
+          print('All manifest checks passed!')
+          "
