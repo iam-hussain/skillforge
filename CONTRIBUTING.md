@@ -107,6 +107,8 @@ Before submitting, verify:
 - [ ] No placeholders — all code examples are complete
 - [ ] LLM-agnostic — works with any AI assistant
 - [ ] Folder name matches frontmatter `name`
+- [ ] `references/` contains at least one `.md` file
+- [ ] README.md skill section includes both **How to Use** and **Install** `<details>` blocks
 - [ ] Registered in .claude-plugin/marketplace.json, plugin.json, README.md
 
 ---
@@ -121,10 +123,33 @@ Before submitting, verify:
 
 ---
 
+## Versioning
+
+Skillforge uses semantic versioning for both the top-level package
+(`marketplace.json` and `plugin.json`) and individual plugins
+(`marketplace.json` plugin entries).
+
+| Change type | Version bump | Examples |
+|-------------|-------------|----------|
+| Typo fix, comment update, README tweak | **patch** (1.0.0 → 1.0.1) | Fix wording, update URLs |
+| New skill, new CI check, new reference file | **minor** (1.0.0 → 1.1.0) | Add `form-architecture` skill |
+| Breaking schema change, rename skill folder | **major** (1.0.0 → 2.0.0) | Rename `react-component-splitter` → `component-decomposition` |
+
+**When to bump:**
+- Adding a new skill → bump top-level **minor** in both `marketplace.json` and `plugin.json`
+- Updating an existing skill → bump that plugin's **patch** version in `marketplace.json`
+- Structural/breaking change → bump top-level **major** everywhere
+
+---
+
 ## Validation
 
 The CI workflow (`validate-skills.yml`) automatically checks:
 - SKILL.md exists in each skill folder
 - SKILL.md has valid YAML frontmatter with `name` and `description`
+- Description starts with "Use when"
+- Frontmatter `name` matches the folder name
 - SKILL.md is under 500 lines
-- Each skill folder has a `references/` directory
+- Each skill folder has a `references/` directory with at least one `.md` file
+- `marketplace.json` and `plugin.json` list the same skills
+- Every plugin `source` path in `marketplace.json` exists on disk

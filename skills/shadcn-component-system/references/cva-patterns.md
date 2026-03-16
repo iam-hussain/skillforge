@@ -62,6 +62,8 @@ const alertVariants = cva(
       variant: {
         default: "bg-background text-foreground",
         destructive: "text-destructive",
+        // Note: emerald is used because Shadcn has no --success token by default.
+        // Add `--success: 160 84% 39%;` to globals.css to fully tokenize.
         success: "text-emerald-700 dark:text-emerald-400",
       },
       size: {
@@ -85,6 +87,7 @@ const alertVariants = cva(
       {
         variant: "success",
         prominent: true,
+        // Same emerald exception — no --success token in Shadcn defaults
         class: "bg-emerald-500/15 border-emerald-500/50",
       },
       // Prominent + default = subtle fill
@@ -123,6 +126,8 @@ const inputVariants = cva(
       state: {
         default: "border-input",
         error: "border-destructive focus-visible:ring-destructive",
+        // Note: emerald is used because Shadcn has no --success token by default.
+        // Add `--success: 160 84% 39%;` to globals.css to fully tokenize.
         success: "border-emerald-500 focus-visible:ring-emerald-500",
       },
       inputSize: {

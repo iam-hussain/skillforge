@@ -132,6 +132,7 @@ When adding a new skill, follow this schema:
       "source": "./skills/skill-name",
       "description": "One line — what it does and who it's for",
       "category": "engineering",
+      "version": "1.0.0",
       "tags": ["react", "typescript", "relevant-tag"]
     }
   ]
@@ -211,6 +212,15 @@ commands. Always provide the exact, copy-pasteable path for each skill.
 
 Use the existing skills in README.md as the template. Copy the structure
 exactly, replacing skill name, description, and reference file names.
+
+### Versioning
+
+When adding or modifying skills, follow semantic versioning:
+- **New skill** → bump top-level **minor** version in both `marketplace.json`
+  and `plugin.json` (e.g. 1.1.0 → 1.2.0). Set the new plugin's version to `1.0.0`.
+- **Update existing skill** → bump that plugin's **patch** version in
+  `marketplace.json` (e.g. 1.0.0 → 1.0.1).
+- **Breaking change** (rename, restructure) → bump top-level **major** version.
 
 ---
 

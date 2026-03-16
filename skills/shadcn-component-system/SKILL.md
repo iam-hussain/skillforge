@@ -287,6 +287,10 @@ const statusBadgeVariants = cva(
   {
     variants: {
       status: {
+        // Note: emerald/amber are used here because Shadcn's default token set
+        // does not include --success or --warning variables. To fully tokenize,
+        // add `--success: 160 84% 39%; --warning: 38 92% 50%;` to globals.css
+        // then replace with `bg-success/15 text-success` / `bg-warning/15 text-warning`.
         success: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
         warning: "bg-amber-500/15 text-amber-700 dark:text-amber-400",
         error: "bg-destructive/15 text-destructive",

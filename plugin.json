@@ -1,7 +1,7 @@
 {
   "name": "skillforge",
   "description": "Opinionated, production-grade coding skills for AI assistants",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Jakir Hussain",
   "license": "MIT",
   "repository": "https://github.com/iam-hussain/skillforge",

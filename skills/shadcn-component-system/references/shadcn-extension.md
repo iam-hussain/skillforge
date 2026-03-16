@@ -324,6 +324,8 @@ const formFieldVariants = cva("space-y-1.5", {
     state: {
       default: "",
       error: "[&_input]:border-destructive [&_textarea]:border-destructive",
+      // Note: emerald is used because Shadcn has no --success token by default.
+      // Add `--success: 160 84% 39%;` to globals.css to fully tokenize.
       success: "[&_input]:border-emerald-500 [&_textarea]:border-emerald-500",
     },
   },

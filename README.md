@@ -453,6 +453,100 @@ only the search bar needs interactivity.
 
 </details>
 
+<details>
+<summary><strong>Install</strong></summary>
+
+**Claude Code:**
+```bash
+/plugin install react-component-splitter-plugin
+```
+
+**Cursor:**
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/react-component-splitter.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Windsurf:**
+```bash
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**GitHub Copilot:**
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Cline / Roo Code:**
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Continue:**
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/react-component-splitter.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Aider:**
+```bash
+aider --read skills/react-component-splitter/SKILL.md
+```
+
+Or add to `.aider.conf.yml`:
+```yaml
+read:
+  - skills/react-component-splitter/SKILL.md
+```
+
+**Zed:**
+```bash
+curl -o .rules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Codex CLI (OpenAI):**
+```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Gemini CLI:**
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**JetBrains AI / Junie:**
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**Goose:**
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+```
+
+**ChatGPT / Gemini / Any Chat LLM:** Copy the contents of [`SKILL.md`](./skills/react-component-splitter/SKILL.md) and paste into the system prompt or custom instructions.
+
+**Manual (curl) — SKILL.md + all reference files:**
+```bash
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/SKILL.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/references/hooks-patterns.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-component-splitter/references/compound-components.md
+```
+
+</details>
+
 ---
 
 ### react-project-structure
@@ -499,6 +593,100 @@ I promote it?
 ```
 
 **What to expect:** The AI will detect your stack (Next.js App Router, Pages Router, or Vite), then produce a complete directory tree with file placements following Feature-Slice architecture. Components are placed at the correct atomic level (atoms in `components/ui/`, molecules in `components/shared/`, organisms in `features/*/components/`). Barrel exports, naming conventions, and import rules are enforced automatically.
+
+</details>
+
+<details>
+<summary><strong>Install</strong></summary>
+
+**Claude Code:**
+```bash
+/plugin install react-project-structure-plugin
+```
+
+**Cursor:**
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/react-project-structure.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Windsurf:**
+```bash
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**GitHub Copilot:**
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Cline / Roo Code:**
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Continue:**
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/react-project-structure.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Aider:**
+```bash
+aider --read skills/react-project-structure/SKILL.md
+```
+
+Or add to `.aider.conf.yml`:
+```yaml
+read:
+  - skills/react-project-structure/SKILL.md
+```
+
+**Zed:**
+```bash
+curl -o .rules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Codex CLI (OpenAI):**
+```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Gemini CLI:**
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**JetBrains AI / Junie:**
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**Goose:**
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+```
+
+**ChatGPT / Gemini / Any Chat LLM:** Copy the contents of [`SKILL.md`](./skills/react-project-structure/SKILL.md) and paste into the system prompt or custom instructions.
+
+**Manual (curl) — SKILL.md + all reference files:**
+```bash
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/SKILL.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/references/feature-slice.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/react-project-structure/references/atomic-design.md
+```
 
 </details>
 
@@ -556,6 +744,105 @@ the original Button source.
 ```
 
 **What to expect:** The AI will first check if Shadcn primitives exist for the requirement, then decompose the UI into atoms/molecules/organisms. Every component gets a CVA variant schema (no inline conditional classes), uses semantic theme tokens (no raw colors like `blue-500`), preserves native HTML attributes via `ComponentPropsWithoutRef`, and forwards refs. Output includes complete TypeScript code, CVA schema, file placement, and usage examples.
+
+</details>
+
+<details>
+<summary><strong>Install</strong></summary>
+
+**Claude Code:**
+```bash
+/plugin install shadcn-component-system-plugin
+```
+
+**Cursor:**
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/shadcn-component-system.mdc \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Windsurf:**
+```bash
+curl -o .windsurfrules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**GitHub Copilot:**
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Cline / Roo Code:**
+```bash
+curl -o .clinerules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Continue:**
+```bash
+mkdir -p .continue/rules
+curl -o .continue/rules/shadcn-component-system.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Aider:**
+```bash
+aider \
+  --read skills/shadcn-component-system/SKILL.md \
+  --read skills/shadcn-component-system/references/cva-patterns.md \
+  --read skills/shadcn-component-system/references/shadcn-extension.md
+```
+
+Or add to `.aider.conf.yml`:
+```yaml
+read:
+  - skills/shadcn-component-system/SKILL.md
+  - skills/shadcn-component-system/references/cva-patterns.md
+  - skills/shadcn-component-system/references/shadcn-extension.md
+```
+
+**Zed:**
+```bash
+curl -o .rules \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Codex CLI (OpenAI):**
+```bash
+curl -o AGENTS.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Gemini CLI:**
+```bash
+curl -o GEMINI.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**JetBrains AI / Junie:**
+```bash
+mkdir -p .junie
+curl -o .junie/guidelines.md \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**Goose:**
+```bash
+curl -o .goosehints \
+  https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+```
+
+**ChatGPT / Gemini / Any Chat LLM:** Copy the contents of [`SKILL.md`](./skills/shadcn-component-system/SKILL.md) and paste into the system prompt or custom instructions.
+
+**Manual (curl) — SKILL.md + all reference files:**
+```bash
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/SKILL.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/cva-patterns.md
+curl -O https://raw.githubusercontent.com/iam-hussain/skillforge/main/skills/shadcn-component-system/references/shadcn-extension.md
+```
 
 </details>
 
